@@ -38,12 +38,14 @@ Plugin 'honza/vim-snippets'
  Plugin 'flazz/vim-colorschemes'
  Plugin 'tpope/vim-rails'
  Plugin 'unite.vim'
- Plugin 'bling/vim-airline'
+ Plugin 'vim-airline/vim-airline'
+ Plugin 'vim-airline/vim-airline-themes'
  Plugin 'mileszs/ack.vim'
  Plugin 'vim-ruby/vim-ruby'
  " Plugin 'mattn/emmet-vim'
-Plugin 'scrooloose/nerdTree'
- call vundle#end()            " required
+Plugin 'stephpy/vim-yaml'
+Plugin 'elzr/vim-json'
+call vundle#end()            " required
  filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
 filetype plugin on
@@ -76,7 +78,7 @@ set grepprg=ack
 "Other settings
 colorscheme railscasts
 "airline color scheme
-"let g:airline_theme= 'luna'
+let g:airline_theme= 'luna'
 syntax on
 set ruler
 set number
