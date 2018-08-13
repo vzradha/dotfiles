@@ -45,6 +45,12 @@ Plugin 'honza/vim-snippets'
  " Plugin 'mattn/emmet-vim'
 Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'SirVer/ultisnips'
+Plugin 'm-kat/aws-vim'
+Plugin 'hashivim/vim-terraform'
+Plugin 'andviro/flake8-vim'
+
 call vundle#end()            " required
  filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
