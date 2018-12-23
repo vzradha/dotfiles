@@ -108,3 +108,5 @@ fi
 # Sourcing the zsh theme for some wierd reason. ZSH_THEME not working correctly
 #source ~/.oh-my-zsh/themes/mrtazz.zsh-theme
 
+# Sourcing aws command completion
+source /usr/local/bin/aws_zsh_completer.sh
