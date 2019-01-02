@@ -1,3 +1,5 @@
+set enc=utf-8
+set fileencoding=utf-8
 "Leader
 let mapleader=","
 
@@ -43,14 +45,21 @@ Plugin 'honza/vim-snippets'
  Plugin 'mileszs/ack.vim'
  Plugin 'vim-ruby/vim-ruby'
  " Plugin 'mattn/emmet-vim'
-Plugin 'stephpy/vim-yaml'
+"Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
 Plugin 'm-kat/aws-vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'andviro/flake8-vim'
-
+Plugin 'Yggdroot/indentLine' 
+Plugin 'scrooloose/syntastic'
+Plugin 'avakhov/vim-yaml'
+Plugin 'fatih/vim-go'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'tmhedberg/simpylfold' "Code folding for python
+Plugin 'jgerry/terraform-vim-folding' "Terraform code folding
+Plugin 'towolf/vim-helm'
 call vundle#end()            " required
  filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
@@ -67,8 +76,19 @@ filetype plugin on
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
 
-" NerdTree shortcut
-map <F2> :NERDTreeToggle
+"NerdTree settings
+map <F2> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['.DS_Store']
+let NERDTreeShowBookmarks=0         "show bookmarks on startup
+let NERDTreeHighlightCursorline=1   "Highlight the selected entry in the tree
+let NERDTreeShowLineNumbers=0
+let NERDTreeMinimalUI=1
+
+"Get the 2-space YAML as the default when hit carriage return after the colon
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+"Filetype set for *.tf 
+au BufRead,BufNewFile *.tf setlocal filetype=terraform
 
 "Vimux aliases
 "nmap <leader>vr :call VimuxRunCommand('ls')<cr> 
@@ -82,7 +102,7 @@ map <F2> :NERDTreeToggle
 set grepprg=ack
 
 "Other settings
-colorscheme railscasts
+colorscheme badwolf
 "airline color scheme
 let g:airline_theme= 'luna'
 syntax on
@@ -105,9 +125,31 @@ set shiftround
 
 set clipboard=unnamed
 
+set pastetoggle=<leader>p       " paste mode: avoid auto indent, treat chars as literal
+
+"Indent Lines config
+let g:indentLine_setColors = 1
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 239
+let g:indentLine_setConceal = 1
 
 "faster redrawing
 set ttyfast
+
+"backup and swap files 
+
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Use a bar-shaped cursor for insert mode, even through tmux.
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 "Searching
 set ignorecase
