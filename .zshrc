@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="mrtazz"
+ZSH_THEME="mgutz"
 #ZSH_THEME="cloudy"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -45,16 +45,16 @@ ZSH_THEME="mrtazz"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
- ZSH_CUSTOM=$HOME/.ssh-aliases
+#ZSH_CUSTOM=$HOME/.ssh-aliases
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx ruby rails tmux brew bundler common-aliases git-extras)  
+plugins=(git osx ruby rails tmux brew bundler common-aliases git-extras zsh-autosuggestions kubectl)  
 
 # Vultr SSH aliases
-source $ZSH_CUSTOM/.vultr-ssh-aliases
+#source $ZSH_CUSTOM/.vultr-ssh-aliases
 
 # User configuration
 
@@ -99,7 +99,7 @@ eval "$(jenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 #export PATH="$PYENV_ROOT/versions/3.7.0/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+  eval "$(pyenv init -)";
 fi
 if which pyenv-virtualenv-init > /dev/null; then
  eval "$(pyenv virtualenv-init -)";
@@ -110,3 +110,17 @@ fi
 
 # Sourcing aws command completion
 source /usr/local/bin/aws_zsh_completer.sh
+# All things Golang
+#
+export GOPATH="${HOME}/workspace/go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/vzradha/workspace/python-test/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vzradha/workspace/python-test/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/vzradha/workspace/python-test/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vzradha/workspace/python-test/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

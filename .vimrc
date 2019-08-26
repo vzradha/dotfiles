@@ -2,14 +2,12 @@ set enc=utf-8
 set fileencoding=utf-8
 "Leader
 let mapleader=","
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
- set rtp+=~/.vim/bundle/Vundle.vim
- call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 " "call vundle#begin('~/some/path/here')
 "
 " " let Vundle manage Vundle, required
@@ -45,7 +43,7 @@ Plugin 'honza/vim-snippets'
  Plugin 'mileszs/ack.vim'
  Plugin 'vim-ruby/vim-ruby'
  " Plugin 'mattn/emmet-vim'
-"Plugin 'stephpy/vim-yaml'
+Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
@@ -54,12 +52,13 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'andviro/flake8-vim'
 Plugin 'Yggdroot/indentLine' 
 Plugin 'scrooloose/syntastic'
-Plugin 'avakhov/vim-yaml'
+"Plugin 'avakhov/vim-yaml'
 Plugin 'fatih/vim-go'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'tmhedberg/simpylfold' "Code folding for python
 Plugin 'jgerry/terraform-vim-folding' "Terraform code folding
 Plugin 'towolf/vim-helm'
+Plugin 'matze/vim-move' "moving lines within the code
 call vundle#end()            " required
  filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
@@ -75,7 +74,9 @@ filetype plugin on
 " "
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
-
+"Customization for vim-move
+"let g:move_key_modifier = 'W'
+"
 "NerdTree settings
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.DS_Store']
@@ -102,7 +103,7 @@ au BufRead,BufNewFile *.tf setlocal filetype=terraform
 set grepprg=ack
 
 "Other settings
-colorscheme badwolf
+colorscheme deus
 "airline color scheme
 let g:airline_theme= 'luna'
 syntax on
