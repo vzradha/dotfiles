@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="mgutz"
+ZSH_THEME="fletcherm"
 #ZSH_THEME="cloudy"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -51,7 +51,7 @@ ZSH_THEME="mgutz"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx ruby rails tmux brew bundler common-aliases git-extras zsh-autosuggestions kubectl)  
+plugins=(git osx ruby rails tmux brew bundler common-aliases git-extras zsh-autosuggestions kubectl aws)  
 
 # Vultr SSH aliases
 #source $ZSH_CUSTOM/.vultr-ssh-aliases
@@ -89,7 +89,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias v="mvim -v"
+alias tmux="tmux -2"
 
 # tabtab source for yo package
 # uninstall by removing these lines or running `tabtab uninstall yo`
@@ -117,10 +118,14 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/vzradha/workspace/python-test/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vzradha/workspace/python-test/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/vzradha/workspace/gcp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vzradha/workspace/gcp/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/vzradha/workspace/python-test/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vzradha/workspace/python-test/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/vzradha/workspace/gcp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vzradha/workspace/gcp/google-cloud-sdk/completion.zsh.inc'; fi
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export AZS=(ap-southeast-2a ap-southeast-2b ap-southeast-2c)

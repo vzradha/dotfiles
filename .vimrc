@@ -1,10 +1,11 @@
 set enc=utf-8
-set relativenumber
 set fileencoding=utf-8
 set t_Co=256
 set background=dark
-let mapleader = ","
+let mapleader=","
 set nocompatible              
+set wildmenu
+set path+=**
 filetype off                  
 
 "set the runtime path to include Vundle and initialize
@@ -41,7 +42,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'jiangmiao/auto-pairs'
@@ -52,6 +53,7 @@ Plugin 'andviro/flake8-vim'
 Plugin 'Yggdroot/indentLine' 
 Plugin 'scrooloose/syntastic'
 "Plugin 'avakhov/vim-yaml'
+Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'fatih/vim-go'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'tmhedberg/simpylfold' "Code folding for python
@@ -62,7 +64,13 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " " To ignore plugin indent changes, instead use:
 filetype plugin on
-" "
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv        = 1
+let g:netrw_keepdir = 0
+map <C-E> :Lexplore<CR>
+"
 " " Brief help
 " " :PluginList       - lists configured plugins
 " " :PluginInstall    - installs plugins; append `!` to update or just
@@ -74,7 +82,7 @@ filetype plugin on
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
 "Customization for vim-move
-let g:move_key_modifier = 'M'
+let g:move_key_modifier = 'C'
 "
 "NerdTree settings
 "map <F2> :NERDTreeToggle<CR>
@@ -96,24 +104,27 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 au BufRead,BufNewFile *.tf setlocal filetype=terraform
 
 "Vimux aliases
-"nmap <leader>vr :call VimuxRunCommand('ls')<cr> 
-"nmap <leader>vq :VimuxCloseRunner<cr>
+nmap <leader>vr :call VimuxRunCommand('ls')<cr> 
+nmap <leader>vq :VimuxCloseRunner<cr>
+nmap <leader>vp :VimuxPromptCommand<cr>
 
 "Emmet customization
-let g:user_emmet_leader_key='<C-m>'
-let g:user_emmet_mode='a'
+"let g:user_emmet_leader_key='<C-m>'
+"let g:user_emmet_mode='a'
 
 
 "Other settings
-colorscheme deus
+"colorscheme deus
+colorscheme material-theme
+
 "airline color scheme
-let g:airline_theme= 'simple'
+let g:airline_theme= 'deus'
 "let g:airline_theme= 'luna'
 syntax on
 set ruler
-set number
+set number relativenumber
 set anti enc=utf-8
-set guifont=Source\ Code\ Pro\ 14
+set guifont=Source\ Code\ Pro\ for\ Powerline\ 15
 set guioptions-=T " Removes top toolbar
 set autoindent
 set noswapfile
@@ -393,3 +404,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+" Line number toggle between absoulte and relative
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu | endif
+	autocmd BUfLeave,FocusLost,InsertEnter * if &nu | set nornu | endif
+augroup END
+
+
