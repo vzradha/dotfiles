@@ -100,6 +100,7 @@ inoremap <leader>pl <Esc><Esc>:BLines!<CR>
 "Get the 2-space YAML as the default when hit carriage return after the colon
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+
 "Filetype set for *.tf 
 au BufRead,BufNewFile *.tf setlocal filetype=terraform
 
@@ -115,11 +116,12 @@ nmap <leader>vp :VimuxPromptCommand<cr>
 
 "Other settings
 "colorscheme deus
-colorscheme material-theme
+colorscheme gruvbox
 
 "airline color scheme
-let g:airline_theme= 'deus'
+let g:airline_theme= 'papercolor'
 "let g:airline_theme= 'luna'
+let g:airline#extensions#tabline#enabled = 1
 syntax on
 set ruler
 set number relativenumber
@@ -144,7 +146,7 @@ set pastetoggle=<leader>p       " paste mode: avoid auto indent, treat chars as 
 
 "Indent Lines config
 let g:indentLine_setColors = 1
-let g:indentLine_char = '¦'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_bgcolor_term = 235 
 let g:indentLine_setConceal = 2
 "let g:indentLine_bgcolor_gui = '#FFFF5F'

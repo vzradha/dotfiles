@@ -1,0 +1,11 @@
+{
+	"python.venvFolders": [
+		"envs",
+		".pyenv",
+		".direnv"
+	],
+
+	"python.pythonPath": "~/.pyenv/versions/3.7.7/bin/python",
+	"python.jediPath": "~/.pyenv/versions/3.7.7/envs/tools3.7.7/lib/python3.7/site-packages"
+	
+}
