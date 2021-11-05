@@ -6,28 +6,24 @@ let mapleader=","
 set nocompatible              
 set wildmenu
 set path+=**
-filetype off                  
+syntax on
+filetype plugin on
+filetype plugin indent on    " required
 
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
- Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 "============Utilites===================
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-Plugin 'junegunn/fzf.vim'
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-fugitive' "Git repo
-Plugin 'tpope/vim-commentary' "comment/Uncomment lines with gcc or gc in visual mode
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate' "Plugin to use snippets
-"Plugin 'honza/vim-snippets'
 " " plugin from http://vim-scripts.org/vim/scripts.html
  Plugin 'L9'
 " " Git plugin not hosted on GitHub
- Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 
@@ -49,7 +45,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
 Plugin 'm-kat/aws-vim'
 Plugin 'hashivim/vim-terraform'
-Plugin 'andviro/flake8-vim'
+"Plugin 'andviro/flake8-vim'
 Plugin 'Yggdroot/indentLine' 
 Plugin 'scrooloose/syntastic'
 "Plugin 'avakhov/vim-yaml'
@@ -61,29 +57,32 @@ Plugin 'jgerry/terraform-vim-folding' "Terraform code folding
 Plugin 'towolf/vim-helm'
 Plugin 'matze/vim-move' "moving lines within the code
 call vundle#end()            " required
-filetype plugin indent on    " required
-" " To ignore plugin indent changes, instead use:
-filetype plugin on
+
+" switch to terminal from vim
+nnoremap <leader>t :stop<CR>
+"===========NETRW Settings==========
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv        = 1
 let g:netrw_keepdir = 0
 map <C-E> :Lexplore<CR>
-"
-" " Brief help
-" " :PluginList       - lists configured plugins
-" " :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" " :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-" "
-" " see :h vundle for more details or wiki for FAQ
-" " Put your non-Plugin stuff after this line
-"Customization for vim-move
+
+"=======Syntastic settings======
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+"==========Customization for vim-move=========
 let g:move_key_modifier = 'C'
-"
+
+
+
 "NerdTree settings
 "map <F2> :NERDTreeToggle<CR>
 "let NERDTreeIgnore=['.DS_Store']
@@ -92,13 +91,13 @@ let g:move_key_modifier = 'C'
 "let NERDTreeShowLineNumbers=0
 "let NERDTreeMinimalUI=1
 
-"FZF settings
+"============FZF settings===========
 nnoremap <leader>pf :Files<CR>
 nnoremap <leader>pg :GFiles<CR>
 inoremap <leader>pl <Esc><Esc>:BLines!<CR>
 
-"Get the 2-space YAML as the default when hit carriage return after the colon
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+"<Moved to ftplugin> Get the 2-space YAML as the default when hit carriage return after the colon
+"autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 
 "Filetype set for *.tf 
@@ -114,7 +113,7 @@ nmap <leader>vp :VimuxPromptCommand<cr>
 "let g:user_emmet_mode='a'
 
 
-"Other settings
+"=========Other settings=============
 "colorscheme deus
 colorscheme gruvbox
 
@@ -122,7 +121,6 @@ colorscheme gruvbox
 let g:airline_theme= 'papercolor'
 "let g:airline_theme= 'luna'
 let g:airline#extensions#tabline#enabled = 1
-syntax on
 set ruler
 set number relativenumber
 set anti enc=utf-8
@@ -144,7 +142,7 @@ set clipboard=unnamed
 
 set pastetoggle=<leader>p       " paste mode: avoid auto indent, treat chars as literal
 
-"Indent Lines config
+"============Indent Lines config============
 let g:indentLine_setColors = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_bgcolor_term = 235 
@@ -169,7 +167,7 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-"Searching
+"==========Searching===========
 set ignorecase
 set smartcase
 set hlsearch
@@ -232,7 +230,7 @@ autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> c
 "nnoremap <Leader>g#     :YcmCompleter GoToReferences<CR>
 
 
-" === Coc Settings
+"========Coc Settings============
 let g:coc_global_extensions = [
   \ 'coc-python',
   \ 'coc-emmet',
@@ -398,7 +396,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
-" Ultisnips config
+"============Ultisnips config========
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
