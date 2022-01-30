@@ -1,0 +1,7 @@
+pane	djcs	1	1	:*	1	:/Users/vzradha	1	zsh	:
+pane	ioof	1	0	:-	1	:/Users/vzradha	1	zsh	:
+pane	ioof	2	1	:*	1	:/Users/vzradha	1	ssh	:ssh 192.168.1.100
+window	djcs	1	:aws	1	:*	d8fe,318x79,0,0,1	off
+window	ioof	1	:project	0	:-	d8ff,318x79,0,0,2	off
+window	ioof	2	:aztecpop	1	:*	d900,318x79,0,0,3	off
+state	ioof	djcs

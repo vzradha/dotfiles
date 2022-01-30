@@ -58,7 +58,7 @@ ZSH_THEME="fletcherm"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx ruby rails tmux brew bundler common-aliases git-extras zsh-autosuggestions kubectl aws)  
+plugins=(git macos ruby rails tmux brew bundler common-aliases git-extras zsh-autosuggestions kubectl aws)  
 
 # Vultr SSH aliases
 #source $ZSH_CUSTOM/.vultr-ssh-aliases

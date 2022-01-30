@@ -1,0 +1,9 @@
+pane	djcs	1	1	:*	1	:/Users/vzradha	1	zsh	:
+pane	ioof	1	1	:*	1	:/Users/vzradha/workspace/ioof/aws-account-factory-catalog/catalog	1	Vim	:/usr/local/Cellar/macvim/8.2-171/MacVim.app/Contents/MacOS/Vim backup.yml
+pane	ioof	2	0	:	1	:/Users/vzradha	1	ssh	:ssh 192.168.1.100
+pane	ioof	3	0	:-	1	:/Users/vzradha/workspace/ioof	1	zsh	:
+window	djcs	1	:aws	1	:*	d5de,212x79,0,0,1	off
+window	ioof	1	:project	1	:*	d5df,212x79,0,0,2	off
+window	ioof	2	:aztecpop	0	:	d5e0,212x79,0,0,3	off
+window	ioof	3	:reattach-to-user-namespace	0	:-	d5e1,212x79,0,0,4	:
+state	ioof	djcs

@@ -2,7 +2,7 @@ set enc=utf-8
 set fileencoding=utf-8
 set t_Co=256
 set background=dark
-let mapleader=","
+let mapleader = ","
 set nocompatible              
 set wildmenu
 set path+=**
@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 "============Utilites===================
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-fugitive' "Git repo
@@ -33,6 +34,7 @@ Plugin 'tpope/vim-fugitive' "Git repo
 " " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 "
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-airline/vim-airline'
@@ -43,13 +45,14 @@ Plugin 'stephpy/vim-yaml'
 Plugin 'elzr/vim-json'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'm-kat/aws-vim'
 Plugin 'hashivim/vim-terraform'
 "Plugin 'andviro/flake8-vim'
 Plugin 'Yggdroot/indentLine' 
 Plugin 'scrooloose/syntastic'
 "Plugin 'avakhov/vim-yaml'
-Plugin 'Vimjas/vim-python-pep8-indent'
+"Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'fatih/vim-go'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'tmhedberg/simpylfold' "Code folding for python
@@ -76,7 +79,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_python_checkers = ['pylint']
 
 "==========Customization for vim-move=========
 let g:move_key_modifier = 'C'
@@ -94,8 +97,10 @@ let g:move_key_modifier = 'C'
 "============FZF settings===========
 nnoremap <leader>pf :Files<CR>
 nnoremap <leader>pg :GFiles<CR>
+nnoremap <leader>pb :Buffers<cr>
 inoremap <leader>pl <Esc><Esc>:BLines!<CR>
-
+let $FZF_DEFAULT_OPTS='--reverse' 
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8  }  }
 "<Moved to ftplugin> Get the 2-space YAML as the default when hit carriage return after the colon
 "autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
@@ -107,6 +112,7 @@ au BufRead,BufNewFile *.tf setlocal filetype=terraform
 nmap <leader>vr :call VimuxRunCommand('ls')<cr> 
 nmap <leader>vq :VimuxCloseRunner<cr>
 nmap <leader>vp :VimuxPromptCommand<cr>
+nmap <leader>vz :VimuxZoomRunner<cr>
 
 "Emmet customization
 "let g:user_emmet_leader_key='<C-m>'
@@ -118,13 +124,16 @@ nmap <leader>vp :VimuxPromptCommand<cr>
 colorscheme gruvbox
 
 "airline color scheme
-let g:airline_theme= 'papercolor'
+let g:airline_theme= 'base16'
 "let g:airline_theme= 'luna'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
 set ruler
 set number relativenumber
 set anti enc=utf-8
-set guifont=Source\ Code\ Pro\ for\ Powerline\ 15
+set guifont=Source\ Code\ Pro\ for\ Powerline\ 13
 set guioptions-=T " Removes top toolbar
 set autoindent
 set noswapfile

@@ -1,0 +1,9 @@
+pane	djcs	1	1	:*	1	:/Users/vzradha	1	zsh	:
+pane	ioof	1	0	:	1	:/Users/vzradha/workspace/ioof/aws-account-factory-catalog	1	Vim	:/usr/local/Cellar/macvim/8.2-171/MacVim.app/Contents/MacOS/Vim Makefile
+pane	ioof	2	0	:-	1	:/Users/vzradha	1	ssh	:ssh 192.168.1.100
+pane	ioof	3	1	:*	1	:/Users/vzradha/workspace/ioof/aws-account-factory-engine/functions/service_catalog	1	aws	:aws organizations list-roots
+window	djcs	1	:aws	1	:*	d8fe,318x79,0,0,1	off
+window	ioof	1	:project	0	:	d8ff,318x79,0,0,2	off
+window	ioof	2	:aztecpop	0	:-	d900,318x79,0,0,3	off
+window	ioof	3	:reattach-to-user-namespace	1	:*	d901,318x79,0,0,4	:
+state	ioof	djcs

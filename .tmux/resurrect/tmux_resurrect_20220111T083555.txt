@@ -1,0 +1,9 @@
+pane	djcs	1	1	:*	1	:/Users/vzradha	1	zsh	:
+pane	ioof	1	1	:*	1	:/Users/vzradha/workspace/ioof/aws-account-factory-catalog/catalog	1	zsh	:
+pane	ioof	2	0	:	1	:/Users/vzradha	1	ssh	:ssh 192.168.1.100
+pane	ioof	3	0	:-	1	:/Users/vzradha/workspace/ioof/aws-account-factory-engine/functions/service_catalog	1	aws	:aws organizations describe-organization
+window	djcs	1	:aws	1	:*	a38e,133x108,0,0,1	off
+window	ioof	1	:project	1	:*	a38f,133x108,0,0,2	off
+window	ioof	2	:aztecpop	0	:	d900,318x79,0,0,3	off
+window	ioof	3	:reattach-to-user-namespace	0	:-	d901,318x79,0,0,4	:
+state	ioof	djcs
